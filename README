@@ -9,3 +9,27 @@ Technologies:
 Steps:
 * Show working in IE with Rails.js commented out.
 * Turn debugging on and run IE.
+* Click on polygon.
+
+Code that breaks in prototype.js (4583):
+		ATTR: function(elem, match){
+			var name = match[1],
+				result = Expr.attrHandle[ name ] ?
+					Expr.attrHandle[ name ]( elem ) :
+					elem[ name ] != null ?
+						elem[ name ] :
+						elem.getAttribute( name ),
+				value = result + "",
+				type = match[2],
+				check = match[4];
+
+So in IE elem is:
+"OpenLayers.Geometry.Polygon_77"
+VML Element: "<?xml:namespace prefix = olv ns = "urn:schemas-microsoft-com:vml" /><olv:fill id=OpenLayers.Geometry.Polygon_77_fill unselectable="on" opacity = "13107f"></olv:fill><olv:stroke id=OpenLayers.Geometry.Polygon_77_stroke unselectable="on" opacity = "1" endcap = "round" dashstyle = "solid"></olv:stroke>"
+
+In Firefox elem is:
+"OpenLayers.Feature.Vector_78"
+SVG Element
+
+
+

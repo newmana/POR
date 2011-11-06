@@ -67,7 +67,7 @@ function init() {
     style_mark.graphicHeight = 20;
     style_mark.graphicXOffset = 10; // default is -(style_mark.graphicWidth/2);
     style_mark.graphicYOffset = -style_mark.graphicHeight;
-    style_mark.externalGraphic = "../img/marker.png";
+    style_mark.externalGraphic = "./img/marker.png";
     // graphicTitle only works in Firefox and Internet Explorer
     style_mark.graphicTitle = "this is a test tooltip";
 
