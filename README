@@ -31,5 +31,68 @@ In Firefox elem is:
 "OpenLayers.Feature.Vector_78"
 SVG Element
 
+Debugging in IE in Console:
+match[1] - type
+Expr.attrHandle[ name ]
+Expr.attrHandle[ name ]( elem )
+elem[ name ]
+elem.getAttribute( name )
+
+Calling elem.type:
+IE - Failed (throws exception)
+Firefox/Chrome - undefined
+
+Right way to check for null:
+http://davidbcalhoun.com/2011/checking-for-undefined-null-and-empty-variables-in-javascript
+http://saladwithsteve.com/2008/02/javascript-undefined-vs-null.html
+
+What does foo equal?
+var foo;
+
+Null?  No!  Undefined.
+
+Null checks in Javascript:
+* foo.bar == null -> true
+* foo.bar === null -> false
+* foo.bar === "undefined" -> true
+* typeof foo.bar -> "undefined"
+
+But what about elem.type in IE
+* elem.type == null -> exception
+* elem.type === null -> exception
+* elem.type === undefined -> exception
+* typeof elem.type -> "unknown"
+
+What? Unknown type - there's no such thing.  There is if it's an ActiveX control:
+http://robertnyman.com/2005/12/21/what-is-typeof-unknown/
+
+How to fix it?
+
+Prototype:
+4583:
+			var name = match[1];
+			var	result = Expr.attrHandle[ name ] ? Expr.attrHandle[ name ]( elem ) :
+					typeof elem[ name ] !== "unknown" ? elem[ name ] != null ? elem[ name ] : elem.getAttribute(name ) :
+                        "" ;
+			var	value = result + "",
+				type = match[2],
+				check = match[4];
+
+But that creates a new bug at:
+4915 - isXML
+
+What's the fix?
+Well I decided to change rails.js:
+5433:
+      if (Object.isElement(element) && !element['tagUrn'] && Prototype.Selector.match(element, expression)) {
+
+Why?
+
+It was the only code path from rails.js:
+176:    event.findElement('form').store('rails:submit-button', button.name || false);
+
+Because all ActiveX componets have a tagURN property:
+"urn:schemas-microsoft-com:vml"
+http://msdn.microsoft.com/en-us/library/ms534658(v=vs.85).aspx
 
 
