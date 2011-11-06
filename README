@@ -1,2 +1,11 @@
 This is a simple Javascript project showing how combining OpenLayers, Prototype, Rails UJS and 
 Internet Explorer can lead to surprising results.
+
+Technologies:
+* OpenLayers 2.11 http://openlayers.org/
+* Prototype 1.7 http://www.prototypejs.org/
+* Rails Prototype UJS http://github.com/rails/prototype-ujs
+
+Steps:
+* Show working in IE with Rails.js commented out.
+* Turn debugging on and run IE.
