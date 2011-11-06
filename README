@@ -7,9 +7,8 @@ Technologies:
 * Rails Prototype UJS http://github.com/rails/prototype-ujs
 
 Steps:
-* Show working in IE with Rails.js commented out.
-* Turn debugging on and run IE.
-* Click on polygon.
+* Show not working in IE.
+* Start debugger in IE and add break point at 4583.
 
 Code that breaks in prototype.js (4583):
 		ATTR: function(elem, match){
@@ -27,7 +26,8 @@ So in IE elem is:
 "OpenLayers.Geometry.Polygon_77"
 VML Element: "<?xml:namespace prefix = olv ns = "urn:schemas-microsoft-com:vml" /><olv:fill id=OpenLayers.Geometry.Polygon_77_fill unselectable="on" opacity = "13107f"></olv:fill><olv:stroke id=OpenLayers.Geometry.Polygon_77_stroke unselectable="on" opacity = "1" endcap = "round" dashstyle = "solid"></olv:stroke>"
 
-In Firefox elem is:
+Show it running in Firefox:
+elem is:
 "OpenLayers.Feature.Vector_78"
 SVG Element
 
@@ -80,6 +80,12 @@ Prototype:
 
 But that creates a new bug at:
 4915 - isXML
+
+What's going on?
+* Show in Firefox.
+* Add debugging to line 4583.
+* Click on polygon.
+* Show that the rails.js 176 is doing findElement.
 
 What's the fix?
 Well I decided to change rails.js:

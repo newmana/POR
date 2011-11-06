@@ -1,13 +1,8 @@
 var map;
 
 Event.observe(window, 'load', function() {
-    $('logout-button').observe('click', doStuff);
     init();
 });
-
-function doStuff() {
-    alert('Log out');
-}
 
 function init() {
     map = new OpenLayers.Map('map');
