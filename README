@@ -43,6 +43,7 @@ IE - Failed (throws exception)
 Firefox/Chrome - undefined
 
 Right way to check for null:
+http://weblogs.asp.net/bleroy/archive/2005/02/15/Three-common-mistakes-in-JavaScript-_2F00_-EcmaScript.aspx
 http://davidbcalhoun.com/2011/checking-for-undefined-null-and-empty-variables-in-javascript
 http://saladwithsteve.com/2008/02/javascript-undefined-vs-null.html
 
@@ -54,7 +55,7 @@ Null?  No!  Undefined.
 Null checks in Javascript:
 * foo.bar == null -> true
 * foo.bar === null -> false
-* foo.bar === "undefined" -> true
+* foo.bar === undefined -> true
 * typeof foo.bar -> "undefined"
 
 But what about elem.type in IE
@@ -100,5 +101,3 @@ It was the only code path from rails.js:
 Because all ActiveX componets have a tagURN property:
 "urn:schemas-microsoft-com:vml"
 http://msdn.microsoft.com/en-us/library/ms534658(v=vs.85).aspx
-
-https://github.com/newmana/POR
